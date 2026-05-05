@@ -1,0 +1,56 @@
+/* ─── Pac-Man Theme ─────────────────────────────────────────── */
+[data-theme="pacman"] {
+  --bg-primary:      #1a1a1a;
+  --bg-secondary:    #2a2a5a;
+  --accent-primary:  #FCC92F;
+  --accent-ghost-1:  #FF0000;
+  --accent-ghost-2:  #FFB8FF;
+  --accent-ghost-3:  #00CFCF;
+  --accent-ghost-4:  #FFB852;
+  --text-primary:    #F0F0F0;
+  --text-secondary:  #A0A0A0;
+  --marquee-bg:      #ffa4b9;
+  --font-heading:    var(--font-space);
+  --font-body:       var(--font-space);
+}
+
+/* ─── Chess Theme ────────────────────────────────────────────── */
+[data-theme="chess"] {
+  --bg-primary:      #F5F0E8;
+  --bg-secondary:    #EEEED2;
+  --accent-primary:  #769656;
+  --accent-secondary:#4e7837;
+  --text-primary:    #2c2b29;
+  --text-secondary:  #5a5a58;
+  --border-color:    #C9C19A;
+  --marquee-bg:      #769656;
+  --font-heading:    var(--font-playfair);
+  --font-body:       var(--font-space);
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+}
+
+body {
+  background:        var(--bg-primary);
+  color:             var(--text-primary);
+  font-family:       var(--font-body), sans-serif;
+  transition:        background 0.6s ease, color 0.6s ease;
+  overflow-x:        hidden;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Layout Utility ─────────────────────────────────────────── */
+.page-padding {
+  padding-left:  5vw;
+  padding-right: 5vw;
+}
