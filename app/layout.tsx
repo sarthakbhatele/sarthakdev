@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: {
-    default: 'Sarthak Bhatele — Full Stack Developer & AI Engineer',
+    default: 'Sarthak Bhatele | Full Stack Developer & AI Engineer',
     template: '%s | Sarthak Bhatele',
   },
   description: 'Full Stack Developer & AI Engineer building production-ready web apps end-to-end.',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: BASE_URL,
     siteName: 'Sarthak Bhatele Portfolio',
-    title: 'Sarthak Bhatele — Full Stack Developer & AI Engineer',
+    title: 'Sarthak Bhatele | Full Stack Developer & AI Engineer',
     description: 'Full Stack Developer & AI Engineer building production-ready web apps end-to-end.',
     locale: 'en_US',
     images: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Sarthak Bhatele — Full Stack Developer & AI Engineer',
+    title: 'Sarthak Bhatele | Full Stack Developer & AI Engineer',
     description: 'Full Stack Developer & AI Engineer building production-ready web apps end-to-end.',
     images: [`${BASE_URL}/images/og-image.png`],
   },
