@@ -8,17 +8,20 @@ import Navbar from '@/components/core/Navbar'
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
+const BASE_URL = 'https://www.sarthakbhatele.tech' // 🔁 replace this
+
 export const metadata: Metadata = {
   title: 'Sarthak Bhatele | Portfolio',
-  description: 'Fullstack Developer & AI Engineer. Explore my dual-themed interactive portfolio featuring Pac-Man and Chess aesthetics.',
+  description: 'Fullstack Developer & AI Engineer. Dual-themed interactive portfolio featuring Pac-Man and Chess aesthetics.',
+  metadataBase: new URL(BASE_URL), // ✅ this is the key fix
   openGraph: {
     title: 'Sarthak Bhatele | Portfolio',
-    description: 'Fullstack Developer & AI Engineer. Explore my dual-themed interactive portfolio featuring Pac-Man and Chess aesthetics.',
-    url: 'https://sarthakbhatele.com', // Update with actual URL if known
+    description: 'Fullstack Developer & AI Engineer.',
+    url: BASE_URL,
     siteName: 'Sarthak Bhatele',
     images: [
       {
-        url: '/images/photo6.png', // Or another appropriate OG image if available
+        url: '/images/og-image.png', // ✅ Next.js resolves to absolute using metadataBase
         width: 1200,
         height: 630,
         alt: 'Sarthak Bhatele - Fullstack Developer & AI Engineer',
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sarthak Bhatele | Portfolio',
     description: 'Fullstack Developer & AI Engineer.',
-    images: ['/images/photo6.png'],
+    images: ['/images/og-image.png'],
   },
 }
 
@@ -42,11 +45,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable} ${playfairDisplay.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${spaceGrotesk.variable} ${playfairDisplay.variable}`} suppressHydrationWarning>
       <body>
         <SmoothScroll>
           {children}
@@ -56,4 +55,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-

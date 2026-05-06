@@ -103,19 +103,23 @@ function ScreenshotBlock({
             rel="noopener noreferrer"
             style={{
                 flex: '1 1 0',
-                position: 'relative',
-                minHeight: 220,
-                borderRadius: pacman ? 10 : 4,
-                overflow: 'hidden',
+                position: 'sticky',
+                top: 0,
+                alignSelf: 'flex-start',
+                aspectRatio: '16/10',
+                borderRadius: pacman ? 12 : 8,
+                padding: pacman ? 12 : 10,
+                background: pacman ? 'rgba(0,0,0,0.3)' : 'rgba(201,193,154,0.15)',
                 border: `1px solid ${borderColor}`,
-                display: 'block',
+                display: 'flex',
                 cursor: 'pointer',
+                outline: 'none',
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onMouseMove={handleMouseMove}
         >
-            <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, overflow: 'hidden' }}>
+            <div style={{ position: 'relative', flex: 1, borderRadius: pacman ? 8 : 4, overflow: 'hidden' }}>
                 <Image
                     src={project.screenshot}
                     alt={project.title}
@@ -124,7 +128,7 @@ function ScreenshotBlock({
                     style={{
                         objectFit: 'cover',
                         // FIX #6: zoom only on image
-                        transform: hovered ? 'scale(1.06)' : 'scale(1)',
+                        transform: hovered ? 'scale(1.05)' : 'scale(1)',
                         transition: 'transform 0.4s ease',
                     }}
                 />
@@ -134,7 +138,8 @@ function ScreenshotBlock({
                 <div
                     style={{
                         position: 'absolute',
-                        inset: 0,
+                        inset: 12, // match padding
+                        borderRadius: 8,
                         background:
                             'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 4px)',
                         pointerEvents: 'none',

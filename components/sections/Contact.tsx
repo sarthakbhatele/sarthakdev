@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/useTheme'
 
 const EMAIL = 'sarthakbhatele0208@gmail.com'
 const GITHUB = 'https://github.com/sarthakbhatele'
-const LINKEDIN = 'https://linkedin.com/in/sarthakbhatele'
+const LINKEDIN = 'https://www.linkedin.com/in/sarthak-bhatele-55a67a30a'
 
 export default function Contact() {
   const { isPacman } = useTheme()

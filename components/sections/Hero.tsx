@@ -14,8 +14,8 @@ const NOTATION = [
 ]
 
 const STATS = [
-  { value: '3+', label: 'Years Building' },
-  { value: '20+', label: 'Projects Shipped' },
+  { value: '1', label: 'Year Building' },
+  { value: '10+', label: 'Projects Shipped' },
   { value: '∞', label: 'Curiosity' },
 ]
 
