@@ -81,11 +81,13 @@ function ScreenshotBlock({
     tooltipLabel,
     borderColor,
     pacman,
+    isNarrow,
 }: {
     project: Project
     tooltipLabel: string
     borderColor: string
     pacman?: boolean
+    isNarrow?: boolean
 }) {
     const [hovered, setHovered] = useState(false)
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
@@ -102,10 +104,11 @@ function ScreenshotBlock({
             target="_blank"
             rel="noopener noreferrer"
             style={{
-                flex: '1 1 0',
-                position: 'sticky',
-                top: 0,
-                alignSelf: 'flex-start',
+                flex: isNarrow ? '0 0 auto' : '1 1 0',
+                width: isNarrow ? '100%' : 'auto',
+                position: isNarrow ? 'relative' : 'sticky',
+                top: isNarrow ? 'auto' : 0,
+                alignSelf: isNarrow ? 'stretch' : 'flex-start',
                 aspectRatio: '16/10',
                 borderRadius: pacman ? 12 : 8,
                 padding: pacman ? 12 : 10,
@@ -217,6 +220,7 @@ function PacmanModal({ project, index, onClose }: ModalProps) {
             tooltipLabel="▶ Insert Coin"
             borderColor="rgba(252,201,47,0.2)"
             pacman
+            isNarrow={isNarrow}
         />
     )
 
@@ -523,6 +527,7 @@ function ChessModal({ project, index, onClose }: ModalProps) {
             project={project}
             tooltipLabel="Open Game ↗"
             borderColor="#C9C19A"
+            isNarrow={isNarrow}
         />
     )
 
