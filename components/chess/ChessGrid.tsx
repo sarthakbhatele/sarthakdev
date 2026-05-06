@@ -54,7 +54,7 @@ export default function ChessGrid() {
       </div>
 
       {/* Dark strip — backdrop for PawnProgress */}
-      <div
+      {/* <div
         style={{
           position: 'fixed',
           top: 0,
@@ -65,7 +65,7 @@ export default function ChessGrid() {
           pointerEvents: 'none',
           zIndex: 1,
         }}
-      />
+      /> */}
     </>
   )
 }
