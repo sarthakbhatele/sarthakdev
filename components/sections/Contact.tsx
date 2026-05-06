@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '@/hooks/useTheme'
 
-const EMAIL = 'sarthak@example.com'
+const EMAIL = 'sarthakbhatele0208@gmail.com'
 const GITHUB = 'https://github.com/sarthakbhatele'
 const LINKEDIN = 'https://linkedin.com/in/sarthakbhatele'
 

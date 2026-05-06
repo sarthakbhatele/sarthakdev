@@ -120,6 +120,7 @@ function ScreenshotBlock({
                     src={project.screenshot}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     style={{
                         objectFit: 'cover',
                         // FIX #6: zoom only on image

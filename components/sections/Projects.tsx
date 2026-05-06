@@ -36,7 +36,7 @@ function MarqueeRow({ reverse = false, bg }: { reverse?: boolean; bg: string }) 
         }}
       >
         {images.map((p, i) => (
-          <div key={`${p.id}-${i}`} style={{ position: 'relative', height: 140, width: 220, flexShrink: 0, borderRadius: 8, overflow: 'hidden' }}>
+          <div key={`${p.id}-${i}`} style={{ position: 'relative', height: 200, width: 220, flexShrink: 0, borderRadius: 8, overflow: 'hidden' }}>
             <Image src={p.screenshot} alt={p.title} fill style={{ objectFit: 'cover' }} sizes="220px" />
           </div>
         ))}
@@ -136,13 +136,20 @@ function PacmanProjects() {
           {!isMobile && (
             <div style={{
               position: 'absolute', inset: 0, zIndex: 0, opacity: 0.09,
-              filter: 'blur(1.5px)', pointerEvents: 'none', overflow: 'hidden',
+              pointerEvents: 'none', overflow: 'hidden',
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
               transform: 'rotate(-2deg) scaleX(1.1)', transformOrigin: 'center',
             }}>
               <MarqueeRow bg="#1a1a1a" />
               <MarqueeRow reverse bg="#1a1a1a" />
               <MarqueeRow bg="#1a1a1a" />
+              <MarqueeRow reverse bg="#1a1a1a" />
+              {!isDesktop && (
+                <>
+                  <MarqueeRow bg="#1a1a1a" />
+                  <MarqueeRow reverse bg="#1a1a1a" />
+                </>
+              )}
             </div>
           )}
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -179,30 +186,37 @@ function PacmanCard({ project, index, onOpen }: CardProps) {
         background: 'rgba(26,26,26,0.92)', border: '1px solid #2a2a5a', borderRadius: 12,
         padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: 14,
         cursor: 'pointer', transition: 'border-color 0.25s ease, transform 0.25s ease',
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(8px)', overflow: 'hidden',
       }}
     >
-      <GhostBadge type={project.type} />
-      <h3 style={{ fontFamily: 'var(--font-space), sans-serif', fontWeight: 700, fontSize: '1.15rem', color: '#FCC92F', letterSpacing: '-0.01em' }}>
-        {project.title}
-      </h3>
+      {/* Full-bleed screenshot */}
+      <div style={{ position: 'relative', height: 240, margin: '-1.5rem -1.5rem 0', flexShrink: 0 }}>
+        <Image src={project.screenshot} alt={project.title} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+      </div>
+      {/* Title + badge in one row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <h3 style={{ fontFamily: 'var(--font-space), sans-serif', fontWeight: 700, fontSize: '1.15rem', color: '#FCC92F', letterSpacing: '-0.01em', margin: 0 }}>
+          {project.title}
+        </h3>
+        <GhostBadge type={project.type} />
+      </div>
       <p style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: '0.88rem', color: '#A0A0A0', lineHeight: 1.65 }}>
         {project.description}
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {project.stack.map(s => (
+        {project.cardStack.map(s => (
           <span key={s} style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 11, fontWeight: 600, color: '#FCC92F', background: 'rgba(252,201,47,0.1)', border: '1px solid rgba(252,201,47,0.25)', borderRadius: 999, padding: '2px 10px', letterSpacing: '0.06em' }}>
             {s}
           </span>
         ))}
       </div>
-      <div style={{ display: 'flex', gap: 12, marginTop: 'auto', paddingTop: 8 }}>
-        {[{ label: 'GitHub', href: project.github }, { label: 'Live ↗', href: project.link }].map(({ label, href }) => (
+      <div style={{ display: 'flex', gap: 20, marginTop: 'auto', paddingTop: 8 }}>
+        {[{ label: 'GitHub', href: project.github }, { label: 'Live ↗', href: project.link }].filter(({ href }) => href).map(({ label, href }) => (
           <a key={label} href={href} target="_blank" rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 12, fontWeight: 600, color: '#1a1a1a', background: '#FCC92F', border: 'none', borderRadius: 6, padding: '6px 16px', textDecoration: 'none', letterSpacing: '0.05em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.8')}
-            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 13, fontWeight: 600, color: '#FCC92F', textDecoration: 'underline', textUnderlineOffset: 4, letterSpacing: '0.02em', transition: 'color 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#e8b520')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#FCC92F')}
           >
             {label}
           </a>
@@ -255,6 +269,13 @@ function ChessProjects() {
               <MarqueeRow bg="#F5F0E8" />
               <MarqueeRow reverse bg="#F5F0E8" />
               <MarqueeRow bg="#F5F0E8" />
+              <MarqueeRow reverse bg="#F5F0E8" />
+              {!isDesktop && (
+                <>
+                  <MarqueeRow bg="#F5F0E8" />
+                  <MarqueeRow reverse bg="#F5F0E8" />
+                </>
+              )}
             </div>
           )}
           <div style={{ position: 'relative', zIndex: 1 }}>
@@ -285,38 +306,45 @@ function ChessCard({ project, index, onOpen }: CardProps) {
       whileHover={{ y: -4 }}
       onClick={onOpen}
       style={{
-        background: 'rgba(245,240,232,0.92)', border: '1px solid #C9C19A', borderRadius: 4,
+        background: 'rgba(245,240,232,0.92)', border: '1px solid #C9C19A', borderRadius: 12,
         padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: 14,
         cursor: 'pointer', transition: 'box-shadow 0.25s ease, transform 0.25s ease',
-        boxShadow: '0 1px 4px rgba(44,43,41,0.06)', backdropFilter: 'blur(8px)',
+        boxShadow: '0 1px 4px rgba(44,43,41,0.06)', backdropFilter: 'blur(8px)', overflow: 'hidden',
       }}
       onHoverStart={e => { (e.target as HTMLElement).style.boxShadow = '0 8px 28px rgba(44,43,41,0.12)' }}
       onHoverEnd={e => { (e.target as HTMLElement).style.boxShadow = '0 1px 4px rgba(44,43,41,0.06)' }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <img
-          src={project.type === 'freelance' ? 'https://img.icons8.com/color/48/queen.png' : 'https://img.icons8.com/color/48/bishop.png'}
-          alt={project.type} width={20} height={20}
-        />
-        <span style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 11, color: '#5a5a58', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          {project.type === 'freelance' ? 'Client Work' : 'Personal'}
-        </span>
+      {/* Full-bleed screenshot */}
+      <div style={{ position: 'relative', height: 240, margin: '-1.5rem -1.5rem 0', flexShrink: 0 }}>
+        <Image src={project.screenshot} alt={project.title} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
       </div>
-      <h3 style={{ fontFamily: 'var(--font-playfair), serif', fontWeight: 700, fontSize: '1.2rem', color: '#2c2b29', letterSpacing: '-0.01em', lineHeight: 1.3 }}>
-        {project.title}
-      </h3>
+      {/* Title + badge in one row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <h3 style={{ fontFamily: 'var(--font-playfair), serif', fontWeight: 700, fontSize: '1.2rem', color: '#2c2b29', letterSpacing: '-0.01em', lineHeight: 1.3, margin: 0 }}>
+          {project.title}
+        </h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+          <img
+            src={project.type === 'freelance' ? 'https://img.icons8.com/color/48/queen.png' : 'https://img.icons8.com/color/48/bishop.png'}
+            alt={project.type} width={18} height={18}
+          />
+          <span style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 11, color: '#5a5a58', letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+            {project.type === 'freelance' ? 'Client Work' : 'Personal'}
+          </span>
+        </div>
+      </div>
       <p style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: '0.875rem', color: '#5a5a58', lineHeight: 1.7 }}>
         {project.description}
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {project.stack.map(s => (
+        {project.cardStack.map(s => (
           <span key={s} style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 11, color: '#4e7837', background: '#EEEED2', border: '1px solid #C9C19A', borderRadius: 4, padding: '2px 10px', letterSpacing: '0.04em' }}>
             {s}
           </span>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 20, marginTop: 'auto', paddingTop: 8 }}>
-        {[{ label: 'GitHub', href: project.github }, { label: 'Live ↗', href: project.link }].map(({ label, href }) => (
+        {[{ label: 'GitHub', href: project.github }, { label: 'Live ↗', href: project.link }].filter(({ href }) => href).map(({ label, href }) => (
           <a key={label} href={href} target="_blank" rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
             style={{ fontFamily: 'var(--font-space), sans-serif', fontSize: 13, color: '#769656', textDecoration: 'underline', textUnderlineOffset: 4, letterSpacing: '0.02em', transition: 'color 0.2s' }}
