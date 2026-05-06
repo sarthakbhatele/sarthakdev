@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     description: 'Fullstack Developer & AI Engineer.',
     images: ['/images/og-image.png'],
   },
+  verification: {
+    google: '3qfzzrcBumbHgKXOlT_9IUFcpbGuj3-hVI9PHgl8tEY', // paste your code here, not the full tag
+  },
 }
 
 export const viewport: Viewport = {
