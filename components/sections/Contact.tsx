@@ -474,36 +474,9 @@ function ChessFooter() {
           Sarthak Bhatele
         </span>
 
-        <div style={{ display: 'flex', gap: 20 }}>
-          {[
-            { label: 'GitHub', href: GITHUB },
-            { label: 'LinkedIn', href: LINKEDIN },
-          ].map(({ label, href }) => (
-
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: 'var(--font-space), sans-serif',
-                fontSize: 13,
-                color: '#5a5a58',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#769656'
-                e.currentTarget.style.textDecoration = 'underline'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = '#5a5a58'
-                e.currentTarget.style.textDecoration = 'none'
-              }}
-            >
-              {label}
-            </a>
-          ))}
+        <div style={{ display: 'flex', gap: 8 }}>
+          <SocialIcon href={GITHUB} label="GitHub" icon={<GithubIcon />} isPacman={false} />
+          <SocialIcon href={LINKEDIN} label="LinkedIn" icon={<LinkedInIcon />} isPacman={false} />
         </div>
       </div>
 
