@@ -242,7 +242,7 @@ function ChessHero() {
             transition={{ delay: 2.1, duration: 0.6 }}
           >
             <a
-              href="https://drive.google.com/file/d/1vutDPmjVQ9BekvmlpqmiW1wuC2-r0Fr4/view"
+              href="https://drive.google.com/file/d/1vcibv-tfUNT9E_qkEXfq0OZVvE2ixkQ4/view"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -566,7 +566,7 @@ function PacmanHero() {
             transition={{ delay: 1.5, duration: 0.6 }}
           >
             <a
-              href="https://drive.google.com/file/d/1vutDPmjVQ9BekvmlpqmiW1wuC2-r0Fr4/view"
+              href="https://drive.google.com/file/d/1vcibv-tfUNT9E_qkEXfq0OZVvE2ixkQ4/view"
               target="_blank"
               rel="noopener noreferrer"
               style={{
